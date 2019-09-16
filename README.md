@@ -87,7 +87,7 @@ To show or hide HTML elements :
     });
 
 ```
-   <p> beside these properties you can also define various DataTable column optons from table <th> tag Example </p>
+   <p> beside these properties you can also define various DataTable column optons from table th tag Example </p>
    
 ```HTML	
 	<table id="example" style="width:100%"  data-source='{"url": "/test/url","type": "get"}' >
