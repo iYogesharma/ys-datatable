@@ -107,11 +107,8 @@ To show or hide HTML elements :
 	    </thead>
 	    <tbody></tbody>
 	</table>
-
-    ```
-
+```
 #### YSDataTable Buttons
-
 
 
 <p>By default YSDataTable initialize DataTable with five default buttons print,escel,csv,copy and colvis.
@@ -125,8 +122,6 @@ removeButtons option </p>
         }
     });
 ```
-
-
 
 <p> Similarly you can add new buttons to existing buttons of YSDataTable by using addButtons option<p>
 
@@ -149,7 +144,6 @@ removeButtons option </p>
        ]
     });
 ```
-
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/iYogesharma/ys-datatable/blob/master/LICENSE.md) for more information.
