@@ -108,7 +108,7 @@ To show or hide HTML elements :
 	    <tbody></tbody>
 	</table>
 
-    ````
+    ```
 
 #### YSDataTable Buttons
 
