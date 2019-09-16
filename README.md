@@ -75,18 +75,19 @@ To show or hide HTML elements :
         }
     </script>
 ```
-<p>
-    property case in table <thead> is used by YSDataTAble to identify case of column names 
-    It hs two options lower or upper .By default it will convert column names to lower case.
+<p>property case in table <thead> is used by YSDataTAble to identify case of column names.It has two options lower or upper .By default it will convert column names to lower case.data-source property of <table> is used to identify datatable ajax option.You can also define ajax option programmatically as </p>
 
-    data-source property of <table> is used to identify datatable ajax option.You can also define ajax option programmatically
-    as 
+```HTML
+    $('#example').YSDataTable({
+    ajax:{
+        url: '/test/url',
+        type:'get'
+    }
 
-    beside these properties you can also define various DataTable column optons from table <th> tag.
+    });
 
-    Example :
-
- </p>
+```
+   <p> beside these properties you can also define various DataTable column optons from table <th> tag Example </p>
 
     ```HTML
         <table id="example" style="width:100%"  data-source='{"url": "/test/url","type": "get"}' >
@@ -110,16 +111,7 @@ To show or hide HTML elements :
 
 
 
-```HTML
-        $('#example').YSDataTable({
-        ajax:{
-            url: '/test/url',
-            type:'get'
-        }
 
-        });
-
-```
 
 #### YSDataTable Buttons
 
