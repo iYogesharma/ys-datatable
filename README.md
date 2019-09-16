@@ -88,30 +88,27 @@ To show or hide HTML elements :
 
 ```
    <p> beside these properties you can also define various DataTable column optons from table <th> tag Example </p>
+   
+```HTML	
+	<table id="example" style="width:100%"  data-source='{"url": "/test/url","type": "get"}' >
+	    <thead class="bg-sky" case="upper">
+		<tr>
+		    <th  export=1 data-render=renderSerialNumber defaultContent="0">SR NO.</th>
+		    <th  export=1>Name</th>
+		    <th  export=1 data-name="Code" >Login Id</th>
+		    <th  export=1>Logo</th>
+		    <th  export=1 visible=0 dtClass="column-info">Email</th>
+		    <th  export=1 data-name="Number">Contact Number</th>
+		    <th  export=1>GSTIN</th>
+		    <th  export=1>Address</th>
+		    <th  search=0 sort=0 export=0>Active</th>
+		    <th  search=0 sort=0 export=0>Action</th>
+		</tr>
+	    </thead>
+	    <tbody></tbody>
+	</table>
 
-    ```HTML
-        <table id="example" style="width:100%"  data-source='{"url": "/test/url","type": "get"}' >
-            <thead class="bg-sky" case="upper">
-                <tr>
-                    <th  export=1 data-render=renderSerialNumber defaultContent="0">SR NO.</th>
-                    <th  export=1>Name</th>
-                    <th  export=1 data-name="Code" >Login Id</th>
-                    <th  export=1>Logo</th>
-                    <th  export=1 visible=0 dtClass="column-info">Email</th>
-                    <th  export=1 data-name="Number">Contact Number</th>
-                    <th  export=1>GSTIN</th>
-                    <th  export=1>Address</th>
-                    <th  search=0 sort=0 export=0>Active</th>
-                    <th  search=0 sort=0 export=0>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
     ````
-
-
-
-
 
 #### YSDataTable Buttons
 
