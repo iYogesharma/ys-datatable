@@ -77,7 +77,7 @@ To show or hide HTML elements :
 ```
 <p>property case in table <thead> is used by YSDataTAble to identify case of column names.It has two options lower or upper .By default it will convert column names to lower case.</p>
 
-<p>data-source property of <table> is used to identify datatable ajax option.You can also define ajax option programmatically as : </p>
+<p>data-source property of table tag is used to identify datatable ajax option.You can also define ajax option programmatically as : </p>
 
 ```HTML
     $('#example').YSDataTable({
