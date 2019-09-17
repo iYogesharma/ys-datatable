@@ -1,0 +1,30 @@
+{
+  "name": "ys-datatable.js",
+  "version": "0.1.0",
+  "description": "Added support for initializing DataTables(datatables.net) using html tags (like th ,table) properties and data attributes.",
+  "main": "ys-datatable.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iYogesharma/ys-datatable.git"
+  },
+  "keywords": [
+    "ys",
+    "DataTables",
+    "datatales",
+    "jquery datatables",
+    "ys-datatables",
+    "YSDataTables"
+  ],
+  "author": "iyogesharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iYogesharma/ys-datatable/issues"
+  },
+  "homepage": "https://github.com/iYogesharma/ys-datatable#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
