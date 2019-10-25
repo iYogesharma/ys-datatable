@@ -1,6 +1,6 @@
 {
   "name": "ys-datatable.js",
-  "version": "0.1.0",
+  "version": "0.1.1-dev",
   "description": "Added support for initializing DataTables(datatables.net) using html tags (like th ,table) properties and data attributes.",
   "main": "ys-datatable.js",
   "repository": {
