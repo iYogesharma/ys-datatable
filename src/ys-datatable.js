@@ -179,40 +179,10 @@
     this.exportable = [];
 
     /**
-		 * Checks whether columns array of column object is present
-		 * in options object if present initialize @var {array} columns to it
-		 * if not automatically generate column sarray from {HTMLTableHeaderCellElement}
+		 * Case used for column names (values : upper/lower)
 		 */
-    if (options.columns !== undefined && options.columns !== null) {
-      this.columns = options.columns;
-    } else {
-      this.columnNameCase = el.prop('tHead').attributes.case ? el.prop('tHead').attributes.case.value : 'lower';
-      this.columns = this.getColumnsFromTable(el.prop('rows')[0]) || [];
-    }
-
-    /**
-		 * Holds length of number of columns of Datatable
-		 * @var {int}|null columns_length
-		 */
-    this.columns_length = this.columns.length || null;
-
-    /**
-		 * Holds ajax option of Datatable. if no ajax object
-		 * is specified it wiill initialize default to empty object
-		 * @var {object}|null ajax
-		 */
-
-    this.ajax = options.ajax || {};
-
-    /**
-		 * Holds buttons array pf object provided to YSDataTable
-		 * and null of no buttons array provided
-		 * This option is helpful if you want to customize
-		 * buttons to be displayed on datatable
-		 * @var {array}}|null Buttons
-		 */
-    this.Buttons = options.buttons || null;
-
+    this.columnNameCase = el.prop('tHead').attributes.case ? el.prop('tHead').attributes.case.value : 'lower';
+   
     /**
 		 * Default options that YSDataTable use to initialize DataTable
 		 * You can overright/change this object to change default options for initialization
@@ -221,7 +191,8 @@
 		 * @type {Object}
 		*/
     this.defaults = {
-      Buttons: [
+      columns: this.getColumnsFromTable(el.prop('rows')[0]),
+      buttons: [
         {
           extend: 'colvis',
           collectionLayout: 'relative three-column',
@@ -260,24 +231,9 @@
       lengthMenu: [[25, 50, 100, 200, 500, 1000, 10000, -1], [25, 50, 100, 200, 500, 1000, 10000, 'All']],
       columnDefs: null,
       dom: '<"row"<"col-sm-2 "l><"col-sm-8"B><"col-sm-2"f>r>t<"row"<"col-sm-12"i>><"row"<"col-sm-12 center-block"p>>',
-      paging: true,
-      responsive: false,
-      sort: true,
-      info: true,
-      searching: true,
-      ordering: true,
-      scrollX: true,
-      scrollY: false,
-      lengthChange: true,
+      ajax: {},
       processing: false,
-      stateSave: false,
       serverSide: true,
-      autoWidth: true,
-      filter: true,
-      deferRender: false,
-      destroy: false,
-      paginate: true,
-      retrieve: false,
     };
 
     /**
@@ -286,7 +242,7 @@
 		 * This option helps to add custom buttons to DataTable default buttons array
 		 */
     if (options.addButtons !== undefined && options.addButtons !== null) {
-      this.defaults.Buttons = this.defaults.Buttons.concat(options.addButtons);
+      this.defaults.buttons = this.defaults.buttons.concat(options.addButtons);
     }
 
     /**
@@ -302,32 +258,7 @@
 		 * @see [function] getOptions() to get default options object
 		 * @var {object} hold datatable configurations
 		 */
-    this.dtOptions = {
-      columns: this.columns,
-      columnDefs: options.columnDefs || this.defaults.columnDefs,
-      ajax: this.ajax,
-      buttons: this.Buttons || this.defaults.Buttons,
-      dom: options.dom || this.defaults.dom,
-      lengthMenu: options.lengthMenu || this.defaults.lengthMenu,
-      paging: options.paging || this.defaults.paging,
-      responsive: options.responsive || this.defaults.responsive,
-      sort: options.sort || this.defaults.sort,
-      info: options.info || this.defaults.info,
-      searching: options.searching || this.defaults.searching,
-      ordering: options.ordering || this.defaults.ordering,
-      scrollX: options.scrollX || this.defaults.scrollX,
-      scrollY: options.scrollY || this.defaults.scrollY,
-      lengthChange: options.lengthChange || this.defaults.lengthChange,
-      processing: options.processing || this.defaults.processing,
-      stateSave: options.stateSave || this.defaults.stateSave,
-      serverSide: options.serverSide || this.defaults.serverSide,
-      autoWidth: options.autoWidth || this.defaults.autoWidth,
-      filter: options.filter || this.defaults.filter,
-      deferRender: options.deferRender || this.defaults.deferRender,
-      destroy: options.destroy || this.defaults.destroy,
-      paginate: options.paginate || this.defaults.paginate,
-      retrieve: options.retrieve || this.defaults.retrieve,
-    };
+    this.dtOptions = $.extend({}, this.defaults, options);
 
     const self = this;
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -414,14 +345,14 @@
 		 * Return all columns of datatable
 		 */
     getColumns() {
-      return this.columns;
+      return this.defaults.columns;
     },
 
     /**
 		 * Return length of  number of comumns in datatable
 		 */
     getColumnsLength() {
-      return this.columns_length;
+      return this.defaults.columns.length;
     },
 
     /**
@@ -446,7 +377,7 @@
 		 * @return array
 		 */
     getDefaultButtons() {
-      return this.defaults.Buttons;
+      return this.defaults.buttons;
     },
 
     /**
@@ -456,7 +387,7 @@
 		 * @return {void}
 		 */
     removeButtons(targets) {
-      targets.map((target) => delete this.defaults.Buttons[Table.BMAP[target]]);
+      targets.map((target) => delete this.defaults.buttons[Table.BMAP[target]]);
     },
 
     /**
