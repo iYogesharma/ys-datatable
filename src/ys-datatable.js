@@ -182,7 +182,7 @@
 		 * Case used for column names (values : upper/lower)
 		 */
     this.columnNameCase = el.prop('tHead').attributes.case ? el.prop('tHead').attributes.case.value : 'lower';
-   
+
     /**
 		 * Default options that YSDataTable use to initialize DataTable
 		 * You can overright/change this object to change default options for initialization
@@ -312,7 +312,13 @@
           this.unSortable.push(index);
         }
 
-        if (th.attributes.export && parseInt(th.attributes.export.value, 10)) {
+        if (th.attributes.export) {
+          // eslint-disable-next-line eqeqeq
+          // eslint-disable-next-line radix
+          if (parseInt( th.attributes.export.value) === 1 || th.attributes.export.value == 'true') {
+            this.exportable.push(index);
+          }
+        } else {
           this.exportable.push(index);
         }
 
