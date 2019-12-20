@@ -20,6 +20,7 @@ module.exports = {
     "no-tabs" :"off",
     "import/no-unresolved":"off",
     "no-nested-ternary" :"off",
-    "no-param-reassign":"off"
+    "no-param-reassign":"off",
+    "no-use-before-define" : "off"
   },
 };

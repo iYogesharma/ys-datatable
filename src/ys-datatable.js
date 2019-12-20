@@ -151,6 +151,17 @@
         // eslint-disable-next-line no-use-before-define
         return new Table(baseOptions);
       }
+      // Add custom buttons  to default buttons array
+      options.buttons = Table.Buttons.concat(options.addButtons);
+      // remove buttons that are no longer needed
+      if (options.removeButtons !== undefined && options.removeButtons !== null) {
+        options.removeButtons.targets.map((target) => delete options.buttons[Table.BMAP[target]]);
+      }
+      // setting column name case
+      const columnCase = this.prop('tHead').attributes.case ? this.prop('tHead').attributes.case.value : 'lower';
+      Table.prototype.setColumnNameCase(columnCase);
+      // setting properties of columns from tags
+      options.columns = Table.prototype.getColumnsFromTable(this.prop('rows')[0]);
 
       return this.DataTable(options);
     }
@@ -160,17 +171,6 @@
 
   const Table = function ({ el, options }) {
     this.el = el;
-    /**
-		 * Holds indexes of columns that are unSearchable
-		 * @var {array} unSearchable
-		 */
-    this.unSearchable = [];
-
-    /**
-		 * Holds indexes of columns that are unSortable
-		 * @var {array} unSortable
-		 */
-    this.unSortable = [];
 
     /**
 		 * Holds indexes of columns that are exportable
@@ -192,42 +192,7 @@
 		*/
     this.defaults = {
       columns: this.getColumnsFromTable(el.prop('rows')[0]),
-      buttons: [
-        {
-          extend: 'colvis',
-          collectionLayout: 'relative three-column',
-          postfixButtons: ['colvisRestore'],
-          columns: ':gt(0)',
-        },
-        {
-          extend: 'copy',
-
-          exportOptions: {
-            columns: this.exportable || [0, ':visible'],
-          },
-        },
-        {
-          extend: 'excel',
-
-          exportOptions: {
-            columns: this.exportable || [0, ':visible'],
-          },
-        },
-        {
-          extend: 'csv',
-
-          exportOptions: {
-            columns: this.exportable || [0, ':visible'],
-          },
-        },
-        {
-          extend: 'print',
-
-          exportOptions: {
-            columns: this.exportable || [0, ':visible'],
-          },
-        },
-      ],
+      buttons: this.getDefaultButtons(),
       lengthMenu: [[25, 50, 100, 200, 500, 1000, 10000, -1], [25, 50, 100, 200, 500, 1000, 10000, 'All']],
       columnDefs: null,
       dom: '<"row"<"col-sm-2 "l><"col-sm-8"B><"col-sm-2"f>r>t<"row"<"col-sm-12"i>><"row"<"col-sm-12 center-block"p>>',
@@ -279,6 +244,56 @@
   };
 
   /**
+  * hold index of dataTable  columns
+  * that can be exported to csv/excel/pdf
+  * @type {array}
+  * @static
+  */
+  Table.Exportable = [];
+
+  /**
+  * hold default button of dataTable
+  * @type {array}
+  * @static
+  */
+  Table.Buttons = [
+    {
+      extend: 'colvis',
+      collectionLayout: 'relative three-column',
+      postfixButtons: ['colvisRestore'],
+      columns: ':gt(0)',
+    },
+    {
+      extend: 'copy',
+
+      exportOptions: {
+        columns: Table.Exportable || [0, ':visible'],
+      },
+    },
+    {
+      extend: 'excel',
+
+      exportOptions: {
+        columns: Table.Exportable || [0, ':visible'],
+      },
+    },
+    {
+      extend: 'csv',
+
+      exportOptions: {
+        columns: Table.Exportable || [0, ':visible'],
+      },
+    },
+    {
+      extend: 'print',
+
+      exportOptions: {
+        columns: Table.Exportable || [0, ':visible'],
+      },
+    },
+  ];
+
+  /**
 	* hold buttons index mapping for dataTable
 	* @type {Object}
 	* @static
@@ -304,22 +319,14 @@
 		 */
     getColumnsFromTable(tHead) {
       return Array.from(tHead.cells).map((th, index) => {
-        if (th.attributes.sort && parseInt(th.attributes.search.value, 10) !== 1) {
-          this.unSearchable.push(index);
-        }
-
-        if (th.attributes.search && parseInt(th.attributes.sort.value, 10) !== 1) {
-          this.unSortable.push(index);
-        }
-
         if (th.attributes.export) {
           // eslint-disable-next-line eqeqeq
           // eslint-disable-next-line radix
-          if (parseInt( th.attributes.export.value) === 1 || th.attributes.export.value == 'true') {
-            this.exportable.push(index);
+          if (parseInt(th.attributes.export.value, 10) === 1 || th.attributes.export.value == 'true') {
+            Table.Exportable.push(index);
           }
         } else {
-          this.exportable.push(index);
+          Table.Exportable.push(index);
         }
 
         const columns = {
@@ -383,7 +390,23 @@
 		 * @return array
 		 */
     getDefaultButtons() {
-      return this.defaults.buttons;
+      return Table.Buttons;
+    },
+
+    /**
+		 * return array of indexes of columns that can be
+		 * exported to excel/csv/pdf
+		 * @return array
+		 */
+    getExportable() {
+      return Table.Exportable;
+    },
+
+    /**
+     * Set case used for column names
+     */
+    setColumnNameCase(columnCase) {
+      this.columnNameCase = columnCase;
     },
 
     /**

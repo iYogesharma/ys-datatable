@@ -1,0 +1,13 @@
+{
+    "name": "iyogesharma/ys-datatable",
+    "description": "A plug-in that make process of creating DataTables easier",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yogesh Sharma",
+            "email": "yogesh.sharma1@holisollogistics.com"
+        }
+    ],
+    "require": {}
+}
