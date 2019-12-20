@@ -155,7 +155,7 @@
       options.buttons = Table.Buttons.concat(options.addButtons);
       // remove buttons that are no longer needed
       if (options.removeButtons !== undefined && options.removeButtons !== null) {
-        options.removeButtons.targets.map((target) => delete options.buttons[Table.BMAP[target]]);
+        options.removeButtons.target.map((target) => delete options.buttons[Table.BMAP[target]]);
       }
       // setting column name case
       const columnCase = this.prop('tHead').attributes.case ? this.prop('tHead').attributes.case.value : 'lower';
