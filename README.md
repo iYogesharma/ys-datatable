@@ -1,6 +1,9 @@
+<p align="center">
+	<img src="https://github.com/iYogesharma/ys-datatable/blob/master/logo.png" /></p>
+
 [![Build Status](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/build-status/master)
 
-# YSDataTable
+## YSDataTable
 
 <p>A plug-in that helps to initailize datatables [DataTables.net](href="http://datatables.net).</p>
 <p>The plug-in make process of creation DataTables easier by reducing amount of script that we need to write</p>
