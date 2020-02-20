@@ -1,3 +1,5 @@
+[![Build Status](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/build-status/master)
+
 # YSDataTable
 
 <p>A plug-in that helps to initailize datatables [DataTables.net](href="http://datatables.net).</p>
