@@ -1,4 +1,9 @@
-# YSDataTable
+<p align="center">
+	<img src="https://github.com/iYogesharma/ys-datatable/blob/master/logo.png" /></p>
+
+[![Build Status](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iYogesharma/ys-datatable/build-status/master)
+
+## YSDataTable
 
 <p>A plug-in that helps to initailize <a href= "https://datatables.net/" >DataTables</a>.The plug-in make process of creation DataTables easier by reducing amount of script that we need to write
 With YSDataTable you can  set most of DataTable options directly through html tags.</p>
