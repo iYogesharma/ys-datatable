@@ -18,7 +18,7 @@ First include script using script tag:
 
 Basic initialisation :
 
-```html
+```javascript
    $(document).ready( function {
        $('#example').YSDataTable();
     } );
@@ -28,7 +28,7 @@ Initialisation with configuration options
 
 To show or hide HTML elements :
 
-```html
+```javascript
   $(document).ready( function {
     $('#example').YSDataTable( {
         "paginate": false,
@@ -83,7 +83,7 @@ To show or hide HTML elements :
 
 <p><b>data-source</b> property of table tag is used to identify datatable ajax option.You can also define ajax option programmatically as : </p>
 
-```html
+```javascript
   $('#example').YSDataTable({
     ajax:{
         url: '/test/url',
@@ -114,12 +114,11 @@ To show or hide HTML elements :
   </table>
 ```
 #### YSDataTable Buttons
-
-<p>By default YSDataTable initialize DataTable with five default buttons print,escel,csv,copy and colvis.
+By default YSDataTable initialize DataTable with five default buttons print,escel,csv,copy and colvis.
 You are free to remove any of these default button for a particular datatable instance by using YSDataTable 
-removeButtons option </p>
+removeButtons option
 
-```html
+```javascript
   $('#example').YSDataTable({
       removeButtons:{
           target:['print','csv']
@@ -127,9 +126,9 @@ removeButtons option </p>
   });
 ```
 
-<p> Similarly you can add new buttons to existing buttons of YSDataTable by using addButtons option <p>
+Similarly you can add new buttons to existing buttons of YSDataTable by using addButtons option
 
-```html
+```javascript
   $('#example').YSDataTable({
      addButtons:[
           {
