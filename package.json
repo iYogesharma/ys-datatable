@@ -34,7 +34,7 @@
     "concat": "^1.0.3"
   },
   "dependencies": {
-    "datatables.net": "^1.10.20",
+    "datatables.net": "^1.11.3",
     "uglify-es": "^3.3.9"
   }
 }
