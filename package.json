@@ -1,6 +1,5 @@
 {
   "name": "ys-datatable.js",
-  "version": "0.1.1-dev",
   "description": "Added support for initializing DataTables(datatables.net) using html tags (like th ,table) properties and data attributes.",
   "main": "ys-datatable.js",
   "repository": {
@@ -22,9 +21,7 @@
   },
   "homepage": "https://github.com/iYogesharma/ys-datatable#readme",
   "scripts": {
-    "concat": "mkdir -p dist/js && concat -o dist/js/ys-datatable.js src/js/core.js",
-    "uglify": "uglifyjs -o dist/js/ys-datatable.min.js dist/js/ys-datatable.js",
-    "build": "npm run concat && npm run uglify"
+  "build": "mkdir -p dist/js && uglifyjs src/js/core.js -o dist/js/ys-datatable.min.js --compress --mangle"
   },
   "devDependencies": {
     "chai": "^4.2.0",

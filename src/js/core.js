@@ -292,6 +292,16 @@
     return this.dTable;
   };
 
+  const headerFormat =  (data, columnIdx, node) => {
+    return node.innerText
+    .replace(/\(.*?\)/g, '')   // remove text inside parentheses
+    .replace(/\*/g, '')       // remove asterisks
+    .replace(/\s+/g, ' ')     // collapse multiple spaces/newlines
+    .trim()
+  }
+
+
+
   /**
    * hold index of dataTable  columns
    * that can be exported to csv/excel/pdf
@@ -314,30 +324,38 @@
     },
     {
       extend: "copy",
-
       exportOptions: {
-        columns: Table.Exportable || [0, ":visible"]
+        columns: Table.Exportable || [0, ":visible"],
+        format: {
+          header : headerFormat
+        },
       }
     },
     {
       extend: "excel",
-
       exportOptions: {
-        columns: Table.Exportable || [0, ":visible"]
+        columns: Table.Exportable || [0, ":visible"],
+        format: {
+          header : headerFormat
+        },
       }
     },
     {
       extend: "csv",
-
       exportOptions: {
-        columns: Table.Exportable || [0, ":visible"]
+        columns: Table.Exportable || [0, ":visible"],
+        format: {
+          header : headerFormat
+        },
       }
     },
     {
       extend: "print",
-
       exportOptions: {
-        columns: Table.Exportable || [0, ":visible"]
+        columns: Table.Exportable || [0, ":visible"],
+        format: {
+          header : headerFormat
+        },
       }
     }
   ];
