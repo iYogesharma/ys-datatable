@@ -399,7 +399,7 @@
         }
 
         const columns = {
-          seachable: th.attributes.search
+          searchable: th.attributes.search
             ? !!parseInt(th.attributes.search.value, 10)
             : true,
 
